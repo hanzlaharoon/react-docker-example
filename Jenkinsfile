@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    dockerfile {
+      filename 'dockerfile'
+    }
+
+  }
   stages {
     stage('Start') {
       steps {
@@ -7,15 +12,8 @@ pipeline {
       }
     }
 
-    stage('building docker image') {
+    stage('wait') {
       steps {
-        sh 'docker build -t docker-react-app .'
-      }
-    }
-
-    stage('runing docker image') {
-      steps {
-        sh 'docker run -d docker-react-app'
         input 'Finished using the web site? (Click "Proceed" to continue)'
       }
     }
