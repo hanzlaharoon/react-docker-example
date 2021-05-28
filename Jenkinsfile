@@ -15,7 +15,7 @@ pipeline {
 
     stage('runing docker image') {
       steps {
-        sh 'docker run -dp 3000:3000 docker-react-app'
+        sh 'docker run -d docker-react-app'
         input 'Finished using the web site? (Click "Proceed" to continue)'
       }
     }
