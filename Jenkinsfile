@@ -1,17 +1,19 @@
 pipeline {
-  agent {
-    dockerfile {
-      filename 'dockerfile'
-      label 'docker-react-app'
-    }
-
-  }
+  agent any
   stages {
-    stage('Run Docker Container') {
+    stage('Build Docker Image') {
       steps {
         echo 'Starting to build the docker-react-app.'
+        sh '''
+
+docker build -t docker_react .'''
         sh 'echo myCustomeEnvVar = $myCustomeEnvVar'
-        sh 'docker --rm -dp 3000:3000 docker-react-app'
+      }
+    }
+
+    stage('Run Docker Container') {
+      steps {
+        sh 'docker --rm -dp 3000:3000 docker_react'
       }
     }
 
