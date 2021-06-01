@@ -13,7 +13,7 @@ pipeline {
       steps {
         sh 'docker info'
         sh 'docker ps'
-        sh 'docker run --rm --name docker_react -dp 3000:3000 docker_react'
+        sh 'docker run --rm --name docker_react -dp 3000:80 docker_react'
         sh 'docker ps'
       }
     }
