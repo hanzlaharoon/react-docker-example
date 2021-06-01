@@ -12,7 +12,6 @@ pipeline {
     stage('Run Docker Container') {
       steps {
         sh 'docker info'
-        sh 'docker stop docker_react && docker rm docker_react'
         sh 'docker run --rm -dp 3000:3000 docker_react'
       }
     }
