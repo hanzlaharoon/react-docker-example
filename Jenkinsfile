@@ -12,7 +12,9 @@ pipeline {
     stage('Run Docker Container') {
       steps {
         sh 'docker info'
+        sh 'docker ps'
         sh 'docker run --rm -dp 3000:3000 docker_react'
+        sh 'docker ps'
       }
     }
 
