@@ -13,7 +13,7 @@ pipeline {
       steps {
         sh 'docker info'
         sh 'docker ps'
-        sh 'docker run --rm -dp 3000:3000 docker_react'
+        sh 'docker run --rm --name docker_react -dp 3000:3000 docker_react'
         sh 'docker ps'
       }
     }
@@ -21,6 +21,7 @@ pipeline {
     stage('wait') {
       steps {
         input 'Finished using the web site? (Click "Proceed" to continue)'
+        sh 'docker stop docker_react'
       }
     }
 
