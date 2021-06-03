@@ -1,7 +1,15 @@
 version: '3.8'
 
 services:
-  app:
+  # nginx:
+  #   build: './nginx'
+  #   container_name: nginx
+  #   ports:
+  #     - '80:80'
+  #     - '443:443'
+  #   restart: 'always'
+
+  react-app:
     build: .
     ports:
-      - '3000:3000'
+      - '3000:80'
